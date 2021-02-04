@@ -4,6 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
@@ -20,6 +21,7 @@ class Article(db.Model):
 
 
 @app.route("/")
+@app.route('/home')
 def route():
     return render_template("index.html")
 
@@ -27,6 +29,11 @@ def route():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+
+@app.route("/create-article")
+def create_article():
+    return render_template("create-article.html")
 
 
 @app.route("/user/<string:name>/<int:id>")
