@@ -13,4 +13,6 @@
             <p> <b> Дата: {{ article.date.date() }} </b> </p>
         </div>
     </div>
+    <a href="/posts/{{article.id}}/delete" class="btn btn-warning"> Удалить </a>
+    <a href="/posts/{{article.id}}/update" class="btn btn-warning"> Редактировать </a>
 {% endblock %}
